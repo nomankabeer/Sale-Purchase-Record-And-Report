@@ -30,6 +30,7 @@ Route::get('/', function () {
 
 Route::get('/bike' , [BikeController::class , "index"])->name('bike.index');
 Route::get('/bike/create' , [BikeController::class , "create"])->name('bike.create');
+Route::post('/bike/store' , [BikeController::class , "store"])->name('bike.store');
 
 
 Route::get('/user_list' , [UserListController::class , "index"])->name('user_list.index');

@@ -52,7 +52,17 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        unset($data['_token']);
+        if($data['sold_type'] == "Credit"){
+            dd($data , 'dd');
+        }
+        elseif($data['sold_type'] == "Paid"){
+            unset($data['payment_price']);
+            unset($data['payment_date']);
+            Bike::create($data);
+        }
+        dd($data);
     }
 
     /**

@@ -49,8 +49,8 @@
                         </header>
                         <div class="panel-body">
                             <div class="position-center">
-                                <form role="form" method="post">
-
+                                <form role="form" method="post" action="{{route('bike.store')}}">
+                                    @csrf
                                     <header class="panel-heading-custom">Bike Details</header>
                                     <section class="form_section">
                                         <div class="form-group">
