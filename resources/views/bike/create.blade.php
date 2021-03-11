@@ -34,6 +34,9 @@
         .payment_input input{
             margin: 0px 15px;
         }
+        .hide {
+            display: none !important;
+        }
     </style>
 <section id="main-content">
     <section class="wrapper">
@@ -125,14 +128,15 @@
                                         <div class="form-group">
                                             <label class="control-label" for="inputSuccess">Sold Type</label>
                                             <div class="">
-                                                <select class="form-control m-bot15" name="sold_type">
+                                                <select class="form-control m-bot15 sold_type" name="sold_type">
                                                     <option selected >Select Credit Or Payment</option>
-                                                    <option value="Payment">Payment</option>
+                                                    <option value="Paid">Paid</option>
                                                     <option value="Credit">Credit</option>
                                                 </select>
                                             </div>
                                         </div>
 
+                                        <div class="credit_section hide">
                                         <div class="form-group">
                                             <label class="control-label" for="inputSuccess">Credit Type</label>
                                             <div class="">
@@ -144,17 +148,17 @@
                                             </div>
                                         </div>
 
-
-{{--                                        @for($key=0;$key<3;$key++)--}}
+                                        {{--@for($key=0;$key<3;$key++)--}}
                                         <div class="form-group col-dmd-12 payment_block">
                                             <label class="control-label" for="inputSuccess">Payment</label>
                                             <div class="payment_input" style="display: inline-flex;">
-                                                <input required name="purchase_price" type="number" onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
-                                                <input required name="sold_date" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">
+                                                <input required name="payment_price[]" type="number"  onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
+                                                <input required name="payment_date[]" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">
                                                 <input readonly class="btn btn-success col-md-f" data-key="1"  id="add_payment_block" value="Add Another Payment">
                                             </div>
                                         </div>
-                                            {{--@endfor--}}
+                                        {{--@endfor--}}
+                                        </div>
 
                                     </section>
 
@@ -172,13 +176,28 @@
                                                 var payment_block = '<div class="form-group col-dmd-12 payment_block payment_block_'+key+' ">\n' +
                                                     '                                            <label class="control-label" for="inputSuccess">Payment</label>\n' +
                                                     '                                            <div class="payment_input" style="display: inline-flex;">\n' +
-                                                    '                                                <input required name="purchase_price" type="number" onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">\n' +
-                                                    '                                                <input required name="sold_date" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">\n' +
+                                                    '                                                <input required name="payment_price[]" type="number" onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="payment_price" placeholder="purchase_price">\n' +
+                                                    '                                                <input required name="payment_date[]" type="date" class="form-control datepicker col-mdf-3" id="payment_date" placeholder="sold_date">\n' +
                                                     '                                                <input readonly class="btn btn-danger payment_block_delete_btn_'+key+' col-md-f" onclick="return delete_payment_block('+key+')"  data-delete_payment_block="'+key+'"  id="" value="Delete">\n' +
                                                     '                                            </div>\n' +
                                                     '                                        </div>';
                                                 $(".sold_detail_section").append(payment_block);
                                             });
+
+
+
+                                            $(".sold_type").change(function () {
+                                              console.log($(this).val() , 'sss');
+
+                                              if($(this).val() == "Credit"){
+                                                  $(".credit_section").removeClass('hide');
+                                              }
+                                              else if($(this).val() == "Paid"){
+                                                  $(".credit_section").addClass('hide');
+                                              }
+
+                                            });
+
                                         });
 
                                     </script>
