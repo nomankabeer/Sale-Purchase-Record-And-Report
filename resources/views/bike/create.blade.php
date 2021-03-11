@@ -31,6 +31,9 @@
             width: 800px !important;
         }
 
+        .payment_input input{
+            margin: 0px 15px;
+        }
     </style>
 <section id="main-content">
     <section class="wrapper">
@@ -92,46 +95,93 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label" for="inputSuccess">Purchase From</label>
-                                            <div class="">
-                                              <textarea name="about_user"></textarea>
-                                            </div>
-                                        </div>
                                     </section>
 
 
                                     <header class="panel-heading-custom">Sold Details</header>
-                                    <section class="form_section">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Sold Price</label>
-                                        <input name="sold_price" onkeypress="return isNumber(event)" onchange="return isNumber(event)" type="number" class="form-control" id="chassis_no" placeholder="sold_price">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Sold Date</label>
-                                        <input name="sold_date" type="date" class="form-control datepicker" id="sold_date" placeholder="sold_date">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label" for="inputSuccess">Sold To</label>
-                                        <div class="">
-                                            <select class="form-control m-bot15" name="sold_to">
-                                                <option selected>Sold To</option>
-                                               @foreach($user_list as $user)
-                                                   <option value="{{$user->id}}" >{{$user->first_name}} {{$user->last_name}} - Ph#{{$user->phone_no}} - CNIC#{{$user->cnic_no}}</option>
-                                                @endforeach
-                                            </select>
+                                    <section class="form_section sold_detail_section">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Sold Date</label>
+                                            <input name="sold_date" type="date" class="form-control datepicker" id="sold_date" placeholder="sold_date">
                                         </div>
-                                    </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label" for="inputSuccess">Sold To</label>
+                                            <div class="">
+                                                <select class="form-control m-bot15" name="sold_to">
+                                                    <option selected>Sold To</option>
+                                                   @foreach($user_list as $user)
+                                                       <option value="{{$user->id}}" >{{$user->first_name}} {{$user->last_name}} - Ph#{{$user->phone_no}} - CNIC#{{$user->cnic_no}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" >
+                                            <label for="exampleInputEmail1">Sold Price</label>
+                                            <input name="sold_price" onkeypress="return isNumber(event)" onchange="return isNumber(event)" type="number" class="form-control" id="chassis_no" placeholder="sold_price">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label" for="inputSuccess">Sold Type</label>
+                                            <div class="">
+                                                <select class="form-control m-bot15" name="sold_type">
+                                                    <option selected >Select Credit Or Payment</option>
+                                                    <option value="Payment">Payment</option>
+                                                    <option value="Credit">Credit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label" for="inputSuccess">Credit Type</label>
+                                            <div class="">
+                                                <select class="form-control m-bot15" name="credit_type">
+                                                    <option selected >Select Credit Type</option>
+                                                    <option value="Cash Sale Credit">Cash Sale Credit</option>
+                                                    <option value="Installment">Installment</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+{{--                                        @for($key=0;$key<3;$key++)--}}
+                                        <div class="form-group col-dmd-12 payment_block">
+                                            <label class="control-label" for="inputSuccess">Payment</label>
+                                            <div class="payment_input" style="display: inline-flex;">
+                                                <input required name="purchase_price" type="number" onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
+                                                <input required name="sold_date" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">
+                                                <input readonly class="btn btn-success col-md-f" data-key="1"  id="add_payment_block" value="Add Another Payment">
+                                            </div>
+                                        </div>
+                                            {{--@endfor--}}
+
                                     </section>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <input type="file" id="exampleInputFile">
-                                        <p class="help-block"></p>
-                                    </div>
+                                    <script>
+
+                                        function delete_payment_block(key){
+                                            $(".payment_block_"+key).remove();
+                                        }
+
+
+                                        $(document).ready(() => {
+                                            $("#add_payment_block").click(function() {
+                                                var key = parseInt($(this).attr('data-key'));
+                                                $(this).attr('data-key' , key + 1) ;
+                                                var payment_block = '<div class="form-group col-dmd-12 payment_block payment_block_'+key+' ">\n' +
+                                                    '                                            <label class="control-label" for="inputSuccess">Payment</label>\n' +
+                                                    '                                            <div class="payment_input" style="display: inline-flex;">\n' +
+                                                    '                                                <input required name="purchase_price" type="number" onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">\n' +
+                                                    '                                                <input required name="sold_date" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">\n' +
+                                                    '                                                <input readonly class="btn btn-danger payment_block_delete_btn_'+key+' col-md-f" onclick="return delete_payment_block('+key+')"  data-delete_payment_block="'+key+'"  id="" value="Delete">\n' +
+                                                    '                                            </div>\n' +
+                                                    '                                        </div>';
+                                                $(".sold_detail_section").append(payment_block);
+                                            });
+                                        });
+
+                                    </script>
 
                                     <button type="submit" class="btn btn-info">Submit</button>
                                     <a href="{{route('bike.index')}}" class="btn btn-danger">Cancel</a>
@@ -192,7 +242,9 @@
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>--}}
-                    @include('partials.add_user' , ['type' => 'add_bike' ])
+
+
+                    {{--@include('partials.add_user' , ['type' => 'add_bike' ])--}}
                 </div>
             </div>
         </div>
@@ -200,3 +252,41 @@
 
 
     @endsection
+
+@push('script')
+
+    @endpush
+
+
+{{--
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<a id="btn1">Add to the front</a>
+<a id="btn3">Add to the back</a>
+
+<ol>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
+
+<a id="btn2">Add to the top</a>
+<a id="btn4">Add to the back</a>
+
+<script>
+    $(document).ready(() => {
+        $("#btn1").click(() => {
+            $("p").prepend("<strong>Added to the front</strong>. ");
+        });
+        $("#btn2").click(() => {
+            $("ol").prepend("<li>Added to the top</li>");
+        });
+        $("#btn3").click(() => {
+            $("p").append(" <strong>Added to the back</strong>.");
+        });
+        $("#btn4").click(() => {
+            $("ol").append("<li>Added to the back</li>");
+        });
+    });
+</script>--}}
