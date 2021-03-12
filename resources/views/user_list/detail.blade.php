@@ -149,7 +149,7 @@
 
 
                 <!-- //market-->
-                <div class="market-updates">
+                {{--<div class="market-updates">
 
                     <div class="col-md-3 market-update-gd">
                         <div class="market-update-block clr-block-1">
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="clearfix"> </div>
-                </div>
+                </div>--}}
 
 
 

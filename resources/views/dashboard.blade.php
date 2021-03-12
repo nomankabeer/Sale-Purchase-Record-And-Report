@@ -7,69 +7,127 @@
             <div class="form-w3layouts">
                 <div class="row">
                     <div class="col-lg-12">
-                        <section class="panel">
-                            <header class="panel-heading">
-                                Add Bike
-                            </header>
-                            <div class="panel-body">
-                                <div class="position-center">
 
 
+                        <div class="market-updates">
 
-
-
-
-
-                                    <div class="market-updates">
-
-                                        <div class="col-md-3 market-update-gd">
-                                            <div class="market-update-block clr-block-1">
-                                                <div class="col-md-4 market-update-right">
-                                                    <i class="fa fa-usd" ></i>
-                                                </div>
-                                                <div class="col-md-8 market-update-left">
-                                                    <h4>Purchase</h4>
-                                                    <h3>1,250</h3>
-                                                    <p>Other hand, we denounce</p>
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 market-update-gd">
-                                            <div class="market-update-block clr-block-3">
-                                                <div class="col-md-4 market-update-right">
-                                                    <i class="fa fa-usd"></i>
-                                                </div>
-                                                <div class="col-md-8 market-update-left">
-                                                    <h4>Sales</h4>
-                                                    <h3>1,500</h3>
-                                                    <p>Other hand, we denounce</p>
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 market-update-gd">
-                                            <div class="market-update-block clr-block-4">
-                                                <div class="col-md-4 market-update-right">
-                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="col-md-8 market-update-left">
-                                                    <h4>Orders</h4>
-                                                    <h3>1,500</h3>
-                                                    <p>Other hand, we denounce</p>
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-usd"></i>
                                     </div>
-
-
-
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Purchase</h4>
+                                        <h3>1,250</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-
                             </div>
-                        </section>
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-3">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Sales</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-4">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Orders</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-4">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Orders</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="market-updates">
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Purchase</h4>
+                                        <h3>1,250</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-3">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Sales</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-4">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Orders</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-4">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Orders</h4>
+                                        <h3>1,500</h3>
+                                        <p>Other hand, we denounce</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
 
                     </div>
                 </div>
