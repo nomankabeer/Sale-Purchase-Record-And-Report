@@ -9,5 +9,5 @@ class Credit extends Model
 {
     use HasFactory;
     protected $table = "credit";
-    protected $fillable = ['payment_price' , 'payment_date' , 'is_paid'];
+    protected $fillable = ['payment_price' , 'payment_date' , 'is_paid' , 'bike_id'];
 }

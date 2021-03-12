@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\BikeDataTable;
 use App\Models\Bike;
+use App\Models\Credit;
 use App\Models\UserList;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -55,14 +56,21 @@ class BikeController extends Controller
         $data = $request->all();
         unset($data['_token']);
         if($data['sold_type'] == "Credit"){
-            dd($data , 'dd');
+            $credit_price['payment_price'] = $data['payment_price'];
+            $credit_price['payment_date'] = $data['payment_date'];
+            unset($data['payment_price']);
+            unset($data['payment_date']);
+           $bike =  Bike::create($data);
+            foreach ($credit_price['payment_price'] as $key => $price){
+                Credit::create([ 'bike_id' => $bike->id , 'payment_price' => $price , 'payment_date' => $credit_price['payment_date'][$key] ]);
+            }
         }
         elseif($data['sold_type'] == "Paid"){
             unset($data['payment_price']);
             unset($data['payment_date']);
             Bike::create($data);
         }
-        dd($data);
+        return redirect()->route('bike.index');
     }
 
     /**

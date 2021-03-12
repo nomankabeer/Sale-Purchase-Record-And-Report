@@ -24,14 +24,17 @@ class Bike extends Migration
 
             $table->integer('purchase_price')->nullable();
 
-            $table->string('sold_type')->nullable();//cash - credit
+
             $table->integer('sold_price')->nullable();
 
             $table->integer('purchase_from')->unsigned();
-            $table->integer('sold_to')->unsigned();
-
             $table->dateTime('purchase_date')->nullable();
+
+            $table->integer('sold_to')->unsigned();
             $table->dateTime('sold_date')->nullable();
+
+            $table->string('sold_type')->nullable();
+            $table->string('credit_type')->nullable();
 
 
 //            $table->foreignId('purchase_from')->constrained('user_list');

@@ -84,7 +84,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Purchase Date</label>
-                                        <input name="purchase_price" type="date" class="form-control datepicker" id="purchase_date" placeholder="purchase_date">
+                                        <input name="purchase_date" type="date" class="form-control datepicker" id="purchase_date" placeholder="purchase_date">
                                     </div>
 
                                     <div class="form-group">

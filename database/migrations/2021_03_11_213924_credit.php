@@ -15,8 +15,9 @@ class Credit extends Migration
     {
         Schema::create('credit', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('bike_id');
             $table->integer('payment_price')->nullable();
-            $table->integer('payment_date')->nullable();
+            $table->dateTime('payment_date')->nullable();
             $table->tinyInteger('is_paid')->default(0);
             $table->timestamps();
         });
