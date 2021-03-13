@@ -23,19 +23,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('user_list.index')}}">
-                        <i class="fa fa-bike"></i>
-                        <span>Report</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{route('user_list.index')}}">
-                        <i class="fa fa-bike"></i>
-                        <span>Search</span>
-                    </a>
-                </li>
 
 
             </ul>

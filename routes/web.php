@@ -1,11 +1,11 @@
 <?php
+date_default_timezone_set("Asia/Karachi");
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\BikeController;
 use \App\Http\Controllers\UserListController;
 use \App\Http\Controllers\DashboardController;
 //use \Illuminate\Support\Facades\Artisan;
-
 
 
 
