@@ -152,8 +152,8 @@
                                         <div class="form-group col-dmd-12 payment_block">
                                             <label class="control-label" for="inputSuccess">Payment</label>
                                             <div class="payment_input" style="display: inline-flex;">
-                                                <input required name="payment_price[]" type="number"  onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
-                                                <input required name="payment_date[]" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">
+                                                <input  name="payment_price[]" type="number"  onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
+                                                <input  name="payment_date[]" type="date" class="form-control datepicker col-mdf-3" id="sold_date" placeholder="sold_date">
                                                 <input readonly class="btn btn-success col-md-f" data-key="1"  id="add_payment_block" value="Add Another Payment">
                                             </div>
                                         </div>
