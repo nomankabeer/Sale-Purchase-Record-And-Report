@@ -8,6 +8,15 @@
         .market-update-block{
             fpadding: 5px !important;
         }
+
+        .text_haeding {
+            text-align: center;
+            font-size: 37px;
+            line-height: 47px;
+            letter-spacing: 0.6em;
+            font-weight: 900;
+            font-style: normal;
+        }
     </style>
     <section id="main-content">
         <section class="wrapper">
@@ -16,6 +25,8 @@
 
 
 
+                <span class="hr_margin"><hr/></span>
+                <div class="text_haeding">Summary</div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="market-updates123">
@@ -25,9 +36,24 @@
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                     </div>
                                     <div class="col-md-8 market-update-left">
-                                        <h4>Purchase</h4>
-                                        <h3>{{$data['total_purchase_bikes_today']}}</h3>
-                                        <p>Total Purchase Bikes</p>
+                                        <h4>Total Purchased Bikes</h4>
+                                        <h3>{{$data['total_purchased_bikes']}}</h3>
+                                        <p>Total Purchased Bikes</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-4 market-update-right">
+                                        <i style="font-size: 59px;color: white;" class="fa fa-motorcycle"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Total Sold</h4>
+                                        <h3>{{$data['total_sold_bikes']}}</h3>
+                                        <p>Total Sold Bikes</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -40,23 +66,9 @@
                                         <i class="fa fa-usd"></i>
                                     </div>
                                     <div class="col-md-8 market-update-left">
-                                        <h4>Purchase Amount</h4>
-                                        <h3>{{$data['total_purchase_amount_today']}}</h3>
-                                        <p>Total Bikes Purchase Amount</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 market-update-gd">
-                                <div class="market-update-block clr-block-1">
-                                    <div class="col-md-4 market-update-right">
-                                        <i style="font-size: 59px;color: white;" class="fa fa-motorcycle"></i>
-                                    </div>
-                                    <div class="col-md-8 market-update-left">
-                                        <h4>Sold</h4>
-                                        <h3>{{$data['total_sold_bikes_today']}}</h3>
-                                        <p>Total Sold Bikes</p>
+                                        <h4>Stock</h4>
+                                        <h3>{{$data['total_purchased_bikes_stock']}}</h3>
+                                        <p>Total Stock</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -68,9 +80,9 @@
                                         <i style="font-size: 59px;color: white;" class="fa fa-usd"></i>
                                     </div>
                                     <div class="col-md-8 market-update-left">
-                                        <h4>Sold Amount</h4>
-                                        <h3>{{$data['total_sold_amount_today']}}</h3>
-                                        <p>Total Sold Bikes Amount</p>
+                                        <h4>Sold On Cash</h4>
+                                        <h3>{{$data['total_sold_bikes_on_cash']}}</h3>
+                                        <p>Total Sold Bikes On Cash/Paid</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -80,13 +92,79 @@
                         </div>
                     </div>
                 </div>
-                <span class="hr_margin"><hr/></span>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="market-updates123">
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-4">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Sold On Credit</h4>
+                                        <h3>{{$data['total_sold_bikes_on_credit']}}</h3>
+                                        <p>Total Sold Bikes On Credit</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-4 market-update-right">
+                                        <i style="font-size: 59px;color: white;" class="fa fa-motorcycle"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Purchased Amount</h4>
+                                        <h3>{{$data['total_purchased_bikes_amount']}}</h3>
+                                        <p>{{$data['total_purchased_bikes']}} Bikes Purchased Amount</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-3">
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Sold Amount</h4>
+                                        <h3>{{$data['total_sold_bikes_amount']}}</h3>
+                                        <p>Total Sold Amount</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-4 market-update-right">
+                                        <i style="font-size: 59px;color: white;" class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="col-md-8 market-update-left">
+                                        <h4>Total Credit</h4>
+                                        <h3>{{$data['total_credit']}}</h3>
+                                        <p>Total Credit</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
 
 
 
 
 
 
+                <span class="hr_margin"><hr/></span><br>
                 <div class="row">
                     <div class="col-lg-12">
 
@@ -142,9 +220,9 @@
                                         <i style="font-size: 59px;color: white;" class="fa fa-usd"></i>
                                     </div>
                                     <div class="col-md-8 market-update-left">
-                                        <h4>Sold Amount</h4>
+                                        <h4>Sold Amountf</h4>
                                         <h3>{{$data['total_sold_amount_today']}}</h3>
-                                        <p>Total Sold Bikes Amount</p>
+                                        <p>{{$data['total_sold_bikes_amount']}} Bikes Sold Amount</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

@@ -38,7 +38,17 @@ class DashboardController extends Controller{
         $data['total_credit_amount_today'] = $credit_amount;
 
 
-//        dd($data);
+        $data['total_purchased_bikes_stock'] = Bike::where('sold_to' , null)->count();
+        $data['total_purchased_bikes_amount'] = Bike::sum('purchase_price');
+        $data['total_sold_bikes_amount'] = Bike::where('sold_to' , "<>" , null)->sum('sold_price');
+        $data['total_purchased_bikes'] = Bike::count();
+        $data['total_sold_bikes'] = Bike::where('sold_to' , "<>" , null)->count();
+        $data['total_credit'] = Credit::where('is_paid' ,  0)->sum('payment_price');
+        $data['total_paid_amount'] = (int)Credit::where('is_paid' ,  1)->sum('payment_price') + (int)Bike::where('sold_type' , 'Paid')->sum('sold_price');
+        $data['total_sold_bikes_on_credit'] = Bike::where('sold_to' , "<>" , null)->where('sold_type' , "Credit")->count();
+        $data['total_sold_bikes_on_cash'] = Bike::where('sold_to' , "<>" , null)->where('sold_type' , "Paid")->count();
+
+
         return view('dashboard', compact('data'));
     }
 
