@@ -55,7 +55,7 @@ class BikeController extends Controller
     {
         $data = $request->all();
         unset($data['_token']);
-        if($data['sold_type'] == "Credit"){
+        if(@$data['sold_type'] == "Credit"){
             $credit_price['payment_price'] = $data['payment_price'];
             $credit_price['payment_date'] = $data['payment_date'];
             unset($data['payment_price']);
@@ -65,7 +65,7 @@ class BikeController extends Controller
                 Credit::create([ 'bike_id' => $bike->id , 'payment_price' => $price , 'payment_date' => $credit_price['payment_date'][$key] ]);
             }
         }
-        elseif($data['sold_type'] == "Paid"){
+        else{
             unset($data['payment_price']);
             unset($data['payment_date']);
             Bike::create($data);
@@ -151,6 +151,9 @@ class BikeController extends Controller
                 return date_format($created_at, "d-M-Y");
             })
             ->editColumn('sold_date', function (Bike $bike) {
+                if($bike->sold_date == null){
+                    return null;
+                }
                 $created_at = new \DateTime($bike->sold_date);
                 return date_format($created_at, "d-M-Y");
             })
@@ -196,8 +199,8 @@ class BikeController extends Controller
                 return date_format($created_at, "d-M-Y");
             })
             ->editColumn('sold_date', function (Bike $bike) {
-                $created_at = new \DateTime($bike->sold_date);
-                return date_format($created_at, "d-M-Y");
+                $sold_date = new \DateTime($bike->sold_date);
+                return date_format($sold_date, "d-M-Y");
             })
             ->rawColumns(['action'])
             ->setRowId(function (Bike $bike) {

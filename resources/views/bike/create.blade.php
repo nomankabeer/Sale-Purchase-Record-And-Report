@@ -112,7 +112,7 @@
                                             <label class="control-label" for="inputSuccess">Sold To</label>
                                             <div class="">
                                                 <select class="form-control m-bot15" name="sold_to">
-                                                    <option selected>Sold To</option>
+                                                    <option selected disabled>Sold To</option>
                                                    @foreach($user_list as $user)
                                                        <option value="{{$user->id}}" >{{$user->first_name}} {{$user->last_name}} - Ph#{{$user->phone_no}} - CNIC#{{$user->cnic_no}}</option>
                                                     @endforeach
@@ -129,7 +129,7 @@
                                             <label class="control-label" for="inputSuccess">Sold Type</label>
                                             <div class="">
                                                 <select class="form-control m-bot15 sold_type" name="sold_type">
-                                                    <option selected >Select Credit Or Payment</option>
+                                                    <option selected disabled >Select Credit Or Payment</option>
                                                     <option value="Paid">Paid</option>
                                                     <option value="Credit">Credit</option>
                                                 </select>
@@ -141,7 +141,7 @@
                                             <label class="control-label" for="inputSuccess">Credit Type</label>
                                             <div class="">
                                                 <select class="form-control m-bot15" name="credit_type">
-                                                    <option selected >Select Credit Type</option>
+                                                    <option selected disabled >Select Credit Type</option>
                                                     <option value="Cash Sale Credit">Cash Sale Credit</option>
                                                     <option value="Installment">Installment</option>
                                                 </select>
