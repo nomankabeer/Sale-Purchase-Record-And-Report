@@ -14,4 +14,12 @@ class Bike extends Model
     public function credit(){
         return $this->hasMany(Credit::class , 'bike_id' , 'id');
     }
+
+    public function purchaseFrom(){
+        return $this->hasOne(UserList::class , 'id' , 'purchase_from');
+    }
+
+    public function soldTo(){
+        return $this->hasOne(UserList::class , 'id' , 'sold_to');
+    }
 }

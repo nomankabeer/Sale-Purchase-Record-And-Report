@@ -5,7 +5,8 @@
         .hr_margin hr {
             margin: 10px !important;
         }
-        .market-update-block{
+
+        .market-update-block {
             fpadding: 5px !important;
         }
 
@@ -17,17 +18,20 @@
             font-weight: 900;
             font-style: normal;
         }
+
         .report_section {
             margin: 10px;
             padding: 0px 0px 20px 0px;
-            background: rgb(246,246,246);
+            background: rgb(246, 246, 246);
             background: radial-gradient(circle, rgb(246, 246, 246) 0%, rgb(168, 168, 168) 66%);
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
         }
-        .margin_bottom_dashboard{
+
+        .margin_bottom_dashboard {
             margin-bottom: 25px !important;
         }
-        .bike_listing_dashboard{
+
+        .bike_listing_dashboard {
             padding: 0px 15px !important;
         }
     </style>
@@ -196,23 +200,28 @@
                 <br>
                 <div class="report_section">
                     @if(@$_GET['from'] != null && @$_GET['to'] != null)
-                        <div class="text_haeding">Report | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format( new \DateTime($_GET['to']), "d-M-Y")}}</div>
+                        <div class="text_haeding">Report | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}}
+                            - {{date_format( new \DateTime($_GET['to']), "d-M-Y")}}</div>
                     @elseif(@$_GET['from'] != null && @$_GET['to'] == null)
-                        <div class="text_haeding">Report | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format(today(), "d-M-Y")}}</div>
+                        <div class="text_haeding">Report | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}}
+                            - {{date_format(today(), "d-M-Y")}}</div>
                     @else
                         <div class="text_haeding">Daily Report | {{date_format(today(), "d-M-Y")}}</div>
                     @endif
 
-                    <hr/><br>
+                    <hr/>
+                    <br>
                     <form method="get" action="?">
                         <div class="text_haeding">
                             <div class="col-md-3 form-group">
-                                <input value="{{@$_GET['from']}}" name="from" type="date" placeholder=".col-md-3 from_date_search_filter" class="form-control">
+                                <input value="{{@$_GET['from']}}" name="from" type="date"
+                                       placeholder=".col-md-3 from_date_search_filter" class="form-control">
                             </div>
                         </div>
                         <div class="text_haeding">
                             <div class="col-md-3 form-group">
-                                <input value="{{@$_GET['to']}}" name="to" type="date" placeholder=".col-md-3 to_date_search_filter" class="form-control">
+                                <input value="{{@$_GET['to']}}" name="to" type="date"
+                                       placeholder=".col-md-3 to_date_search_filter" class="form-control">
                             </div>
                         </div>
                         <div class="">
@@ -222,11 +231,14 @@
                         </div>
                         <div class="">
                             <div class="col-md-3">
-                                <a href="{{route('dashboard.index')}}" class="form-control btn btn-danger">Clear Filter</a>
+                                <a href="{{route('dashboard.index')}}" class="form-control btn btn-danger">Clear
+                                    Filter</a>
                             </div>
                         </div>
                     </form>
-                    <br><br><hr/><br>
+                    <br><br>
+                    <hr/>
+                    <br>
 
                     <div class="row margin_bottom_dashboard">
                         <div class="col-lg-12">
@@ -400,36 +412,21 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <br><div class="report_section">
+                <br>
+                <div class="report_section">
                     @if(@$_GET['from'] != null && @$_GET['to'] != null)
-                        <div class="text_haeding">Purchased Bikes | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format( new \DateTime($_GET['to']), "d-M-Y")}}</div>
+                        <div class="text_haeding">Bikes
+                            | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}}
+                            - {{date_format( new \DateTime($_GET['to']), "d-M-Y")}}</div>
                     @elseif(@$_GET['from'] != null && @$_GET['to'] == null)
-                        <div class="text_haeding">Purchased Bikes | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format(today(), "d-M-Y")}}</div>
+                        <div class="text_haeding">Bikes
+                            | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}}
+                            - {{date_format(today(), "d-M-Y")}}</div>
                     @else
-                        <div class="text_haeding">Purchased Bikes | {{date_format(today(), "d-M-Y")}}</div>
+                        <div class="text_haeding">Bikes | {{date_format(today(), "d-M-Y")}}</div>
                     @endif
-                    <hr/><br>
+                    <hr/>
+                    <br>
 
 
                     <div class="row margin_bottom_dashboard">
@@ -438,65 +435,145 @@
                                 <div class="row bike_listing_dashboard">
 
                                     @foreach($data['total_purchased_bikes_in_date_range'] as $bike)
-                                    <div class="col-sm-12 col-md-6 col-lg-3">
-                                        <div class="thumbnail">
-                                            {{--<img src="..." alt="...">--}}
-                                            <div class="caption">
-                                                {{--<h3>Thumbnail label</h3>--}}
-                                                <p>
-                                                <ul class="list-group">
+                                        <div class="col-sm-12 col-md-6 col-lg-3">
+                                            <div class="thumbnail">
+                                                {{--<img src="..." alt="...">--}}
+                                                <div class="caption">
+                                                    {{--<h3>Thumbnail label</h3>--}}
+                                                    <p>
+                                                    <ul class="list-group">
 
-                                                    <li class="list-group-item active">Bike Detail</li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>{{$bike->bike_no}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Engine Number</span>{{$bike->engine_no}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Chassis Number</span>{{$bike->chassis_no}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Color</span>{{$bike->color}}
-                                                    </li>
-
-                                                    
-                                                    <li class="list-group-item list-group-item-warning">Purchase Details</li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Name</span>{{$bike->purchaseFrom->first_name}} {{$bike->purchaseFrom->last_name}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">CNIC</span>{{$bike->purchaseFrom->cnic_no}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Phone</span>{{$bike->purchaseFrom->phone_no}}
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Price</span>{{$bike->purchase_price}} Pkr
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Purchase Date</span>{{\App\CommonHelper::humanDate($bike->purchaseFrom->purchase_date)}}
-                                                    </li>
-
-                                                    @if($bike->soldTo)
-                                                    <li class="list-group-item list-group-item-info">Sold To</li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>Cras justo
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>Cras justo
-                                                    </li>
-                                                    @else
-                                                        <li class="list-group-item active">In Stock</li>
-                                                    @endif
+                                                        <li class="list-group-item active">Bike Detail</li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-primary"
+                                                                  style="font-size: 14px; line-height: 16px;">Bike Number</span>{{$bike->bike_no}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-primary"
+                                                                  style="font-size: 14px; line-height: 16px;">Engine Number</span>{{$bike->engine_no}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-primary"
+                                                                  style="font-size: 14px; line-height: 16px;">Chassis Number</span>{{$bike->chassis_no}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-primary"
+                                                                  style="font-size: 14px; line-height: 16px;">Color</span>{{$bike->color}}
+                                                        </li>
 
 
-                                                </ul>
-                                                </p>
-                                                <p><a href="#" class="btn btn-primary" role="button">Detail Page</a></p>
+                                                        <li class="list-group-item list-group-item-warning">Purchase
+                                                            Details
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-warning"
+                                                                  style="font-size: 14px; line-height: 16px;">Name</span>{{$bike->purchaseFrom->first_name}} {{$bike->purchaseFrom->last_name}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-warning"
+                                                                  style="font-size: 14px; line-height: 16px;">CNIC</span>{{$bike->purchaseFrom->cnic_no}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-warning"
+                                                                  style="font-size: 14px; line-height: 16px;">Phone</span>{{$bike->purchaseFrom->phone_no}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-warning"
+                                                                  style="font-size: 14px; line-height: 16px;">Price</span>{{$bike->purchase_price}}
+                                                            Pkr
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge badge-warning"
+                                                                  style="font-size: 14px; line-height: 16px;">Purchase Date</span>{{\App\CommonHelper::humanDate($bike->purchase_date)}}
+                                                        </li>
+
+                                                        @if($bike->soldTo)
+                                                            <li class="list-group-item list-group-item-success">Sold
+                                                                Details
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="badge badge-primary"
+                                                                      style="font-size: 14px; line-height: 16px;">Name</span>{{$bike->soldTo->first_name}} {{$bike->soldTo->last_name}}
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="badge badge-primary"
+                                                                      style="font-size: 14px; line-height: 16px;">CNIC</span>{{$bike->soldTo->cnic_no}}
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="badge badge-primary"
+                                                                      style="font-size: 14px; line-height: 16px;">Phone</span>{{$bike->soldTo->phone_no}}
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="badge badge-primary"
+                                                                      style="font-size: 14px; line-height: 16px;">Price</span>{{$bike->sold_price}}
+                                                                Pkr
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="badge badge-primary"
+                                                                      style="font-size: 14px; line-height: 16px;">Sold Date</span>{{\App\CommonHelper::humanDate($bike->sold_date)}}
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                @if($bike->sold_type == "Paid")
+                                                                    <span class="badge badge-primary"
+                                                                          style="font-size: 14px; line-height: 16px; background: green">Sold Type</span>
+                                                                    <span class="btn btn-success"
+                                                                          disabled>{{$bike->sold_type}}</span>
+                                                                @else
+                                                                    <span class="badge badge-success"
+                                                                          style="font-size: 14px; line-height: 16px;">Sold Type</span>
+                                                                    <span class="btn btn-danger"
+                                                                          disabled>{{$bike->sold_type}}</span>
+                                                                @endif
+                                                            </li>
+                                                            @if($bike->credit_type)
+                                                                <li class="list-group-item">
+                                                                    <span class="badge badge-success"
+                                                                          style="font-size: 14px; line-height: 16px;">Credit Type</span>{{$bike->credit_type}}
+                                                                </li>
+                                                            @endif
+                                                            @if($bike->sold_type === "Credit")
+                                                                <li class="list-group-item list-group-item-danger">
+                                                                    Credit List
+                                                                </li>
+                                                                @php
+                                                                    $unpaid = 0;
+                                                                    $paid = 0;
+                                                                @endphp
+                                                                @foreach($bike->credit as $credit)
+                                                                    <li class="list-group-item">
+                                                                        @if($credit->is_paid == 0)
+                                                                            @php $unpaid += $credit->payment_price; @endphp
+                                                                            <span class="badge badge-danger"
+                                                                                  style="font-size: 14px; line-height: 16px; background: #fb5710;">UPaid</span>
+                                                                        @else
+                                                                            @php $paid += $credit->payment_price; @endphp
+                                                                            <span class="badge badge-primary"
+                                                                                  style="font-size: 14px; line-height: 16px; background: #1F811F">Paid</span>
+                                                                        @endif
+                                                                        {{$credit->payment_price}}
+                                                                        - {{\App\CommonHelper::humanDate($credit->payment_date)}}
+                                                                    </li>
+                                                                @endforeach
+                                                                @if((int)$unpaid > 0)
+                                                                    <li class="list-group-item active"
+                                                                        style="background: #fb5710">Total Credit Amount
+                                                                        Left To Pay = {{$unpaid}}</li>
+                                                                @else
+                                                                    <li class="list-group-item active"
+                                                                        style="background: #1F811F">Total Credit Paid
+                                                                        = {{$paid}}</li>
+                                                                @endif
+                                                            @endif
+                                                        @else
+                                                            <li class="list-group-item active">In Stock</li>
+                                                        @endif
+                                                    </ul>
+                                                    </p>
+                                                    <p><a href="{{route('bike.detail' , $bike->id)}}" target="_blank" class="btn btn-primary" role="button">Detail Page</a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
 
 
@@ -508,13 +585,7 @@
                     </div>
 
 
-
                 </div>
-
-
-
-
-
 
 
             </div>

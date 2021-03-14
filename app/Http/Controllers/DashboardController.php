@@ -61,6 +61,9 @@ class DashboardController extends Controller{
         $data['total_sold_on_cash'] = Bike::whereBetween('sold_date' , [$from, $to])->where('sold_type' , 'Paid')->count();
         $data['total_paid_amount_today'] = Bike::whereBetween('sold_date' , [$from, $to])->where('sold_type' , "Paid")->sum('sold_price');
         $data['total_credit_amount_today'] = $credit_amount;
+
+
+        $data['total_purchased_bikes_in_date_range'] = Bike::whereBetween('purchase_date' , [$from, $to])->with('credit','purchaseFrom','soldTo')->get();
     }
 
 }
