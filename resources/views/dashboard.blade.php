@@ -27,6 +27,9 @@
         .margin_bottom_dashboard{
             margin-bottom: 25px !important;
         }
+        .bike_listing_dashboard{
+            padding: 0px 15px !important;
+        }
     </style>
 
 
@@ -228,7 +231,6 @@
                     <div class="row margin_bottom_dashboard">
                         <div class="col-lg-12">
 
-
                             <div class="market-updates123">
 
                                 <div class="col-md-3 market-update-gd">
@@ -396,12 +398,128 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br><div class="report_section">
+                    @if(@$_GET['from'] != null && @$_GET['to'] != null)
+                        <div class="text_haeding">Purchased Bikes | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format( new \DateTime($_GET['to']), "d-M-Y")}}</div>
+                    @elseif(@$_GET['from'] != null && @$_GET['to'] == null)
+                        <div class="text_haeding">Purchased Bikes | {{date_format( new \DateTime($_GET['from']), "d-M-Y")}} - {{date_format(today(), "d-M-Y")}}</div>
+                    @else
+                        <div class="text_haeding">Purchased Bikes | {{date_format(today(), "d-M-Y")}}</div>
+                    @endif
+                    <hr/><br>
+
+
+                    <div class="row margin_bottom_dashboard">
+                        <div class="col-lg-12">
+                            <div class="market-updates123">
+                                <div class="row bike_listing_dashboard">
+
+                                    @foreach($data['total_purchased_bikes_in_date_range'] as $bike)
+                                    <div class="col-sm-12 col-md-6 col-lg-3">
+                                        <div class="thumbnail">
+                                            {{--<img src="..." alt="...">--}}
+                                            <div class="caption">
+                                                {{--<h3>Thumbnail label</h3>--}}
+                                                <p>
+                                                <ul class="list-group">
+
+                                                    <li class="list-group-item active">Bike Detail</li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>{{$bike->bike_no}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Engine Number</span>{{$bike->engine_no}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Chassis Number</span>{{$bike->chassis_no}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Color</span>{{$bike->color}}
+                                                    </li>
+
+                                                    
+                                                    <li class="list-group-item list-group-item-warning">Purchase Details</li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Name</span>{{$bike->purchaseFrom->first_name}} {{$bike->purchaseFrom->last_name}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">CNIC</span>{{$bike->purchaseFrom->cnic_no}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Phone</span>{{$bike->purchaseFrom->phone_no}}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Price</span>{{$bike->purchase_price}} Pkr
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-warning" style="font-size: 14px; line-height: 16px;">Purchase Date</span>{{\App\CommonHelper::humanDate($bike->purchaseFrom->purchase_date)}}
+                                                    </li>
+
+                                                    @if($bike->soldTo)
+                                                    <li class="list-group-item list-group-item-info">Sold To</li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>Cras justo
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge badge-primary" style="font-size: 14px; line-height: 16px;">Bike Number</span>Cras justo
+                                                    </li>
+                                                    @else
+                                                        <li class="list-group-item active">In Stock</li>
+                                                    @endif
+
+
+                                                </ul>
+                                                </p>
+                                                <p><a href="#" class="btn btn-primary" role="button">Detail Page</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
             </div>
         </section>
     </section>
-
-
-
 
 
 
