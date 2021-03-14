@@ -57,9 +57,33 @@ class BikeController extends Controller
     }
 
     public function detail($id){
+
         $user_list = UserList::select('id' , 'first_name' , 'last_name' , 'phone_no' , 'cnic_no')->orderBy('id' , 'desc')->get();
-        $bike = Bike::where('id' , $id)->first();
-        return view("bike.detail" , compact('user_list' , 'bike'));
+        $bike = Bike::where('id' , $id)->with('credit')->first();
+        $purchase_user['user'] = UserList::where('id' , $bike->purchase_from)->first();
+        return view("bike.detail" , compact('user_list' , 'bike' , 'purchase_user' , 'id'));
+    }
+
+
+    public function detail_update($id , Request $request){
+        $data = $request->all();
+        unset($data['_token']);
+        if(@$data['sold_type'] == "Credit"){
+            $credit_price['payment_price'] = $data['payment_price'];
+            $credit_price['payment_date'] = $data['payment_date'];
+            unset($data['payment_price']);
+            unset($data['payment_date']);
+            $bike =  Bike::where('id' , $id)->update($data);
+            foreach ($credit_price['payment_price'] as $key => $price){
+                Credit::create([ 'bike_id' => $id , 'payment_price' => $price , 'payment_date' => $credit_price['payment_date'][$key] ]);
+            }
+        }
+        else{
+            unset($data['payment_price']);
+            unset($data['payment_date']);
+            Bike::where('id' , $id)->update($data);
+        }
+        return redirect()->route('bike.detail' , $id);
     }
 
     /**

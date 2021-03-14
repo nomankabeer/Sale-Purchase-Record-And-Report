@@ -334,7 +334,7 @@
                                         <div class="col-md-8 market-update-left">
                                             <h4>Credit Paid Amount</h4>
                                             <h3>{{$data['total_credit_paid_amount']}}</h3>
-                                            <p>Paid Amount</p>
+                                            <p>{{$data['total_sold_bikes_today']}} Bike Credit Paid Amount</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -348,7 +348,7 @@
                                         <div class="col-md-8 market-update-left">
                                             <h4>Credit Amount</h4>
                                             <h3>{{$data['total_credit_amount_today']}}</h3>
-                                            <p>Total Credit Amount</p>
+                                            <p>{{$data['total_sold_bikes_today']}} Bike Credit Amount</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -359,7 +359,7 @@
                         </div>
                     </div>
 
-
+                    <hr/>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="market-updates123">
@@ -370,9 +370,9 @@
                                             <i style="font-size: 59px;color: white;" class="fa fa-motorcycle"></i>
                                         </div>
                                         <div class="col-md-8 market-update-left">
-                                            <h4>On Cash/Paid</h4>
+                                            <h4>Sold On Cash/Paid</h4>
                                             <h3>{{$data['total_sold_on_cash']}}</h3>
-                                            <p>Total Sold On Cash</p>
+                                            <p>Total Bikes Sold On Cash</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -386,7 +386,7 @@
                                         <div class="col-md-8 market-update-left">
                                             <h4>Paid Amount</h4>
                                             <h3>{{$data['total_paid_amount_today']}}</h3>
-                                            <p>Total Paid Amount</p>
+                                            <p>{{$data['total_sold_on_cash']}} Bike On Cash/Paid Amount</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>

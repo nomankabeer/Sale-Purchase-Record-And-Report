@@ -34,6 +34,9 @@
         .payment_input input{
             margin: 0px 15px;
         }
+        .payment_input_detail input{
+            margin: 0px 5px;
+        }
         .hide {
             display: none !important;
         }
@@ -49,7 +52,7 @@
                         </header>
                         <div class="panel-body">
                             <div class="position-center">
-                                <form role="form" method="post" action="{{route('bike.store')}}">
+                                <form role="form" method="post" @if($bike->sold_to == null) action="{{route('bike.detail_update' , $id)}} @endif">
                                     @csrf
                                     <header class="panel-heading-custom">Bike Details</header>
                                     <section class="form_section">
@@ -60,17 +63,17 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Engine Number</label>
-                                            <input required name="engine_no" type="text" class="form-control" disabled value="{{$bike->bike_no}}" id="engine_no" placeholder="Engine Number">
+                                            <input required name="engine_no" type="text" class="form-control" disabled value="{{$bike->engine_no}}" id="engine_no" placeholder="Engine Number">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Chassis Number</label>
-                                            <input required name="chassis_no" type="text" class="form-control" disabled value="{{$bike->bike_no}}" id="chassis_no" placeholder="Chassis Number">
+                                            <input required name="chassis_no" type="text" class="form-control" disabled value="{{$bike->chassis_no}}" id="chassis_no" placeholder="Chassis Number">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Color</label>
-                                            <input required name="color" type="text" class="form-control" disabled value="{{$bike->bike_no}}" id="chassis_no" placeholder="color">
+                                            <input required name="color" type="text" class="form-control" disabled value="{{$bike->color}}" id="chassis_no" placeholder="color">
                                         </div>
                                     </section>
 
@@ -79,7 +82,7 @@
                                     <section class="form_section">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Purchase Price</label>
-                                        <input name="purchase_price" type="number" onkeypress="return isNumber(event)" disabled value="{{$bike->bike_no}}" onchange="return isNumber(event)" class="form-control" id="chassis_no" placeholder="purchase_price">
+                                        <input name="purchase_price" type="number" onkeypress="return isNumber(event)" disabled value="{{$bike->purchase_price}}" onchange="return isNumber(event)" class="form-control" id="chassis_no" placeholder="purchase_price">
                                     </div>
 
                                     <div class="form-group">
@@ -102,6 +105,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                        <a href="#Purchased_user" data-toggle="modal" class="btn btn-primary">Purchased Bike From</a>
                                     </section>
 
                                     @if($bike->sold_to == null)
@@ -164,6 +168,99 @@
                                             {{--@endfor--}}
                                             </div>
                                         </section>
+
+                                    @else
+
+                                        <header class="panel-heading-custom">Sold Details</header>
+                                        <section class="form_section sold_detail_section">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sold Date</label>
+                                                @php
+                                                    $created_at = new \DateTime($bike->sold_date);
+                                                    $sold_Date = date_format($created_at, "d-M-Y");
+                                                @endphp
+                                                <input  name="sold_date" type="text" class="form-control" disabled value="{{$sold_Date}}" id="sold_date" placeholder="sold_date">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label" for="inputSuccess">Sold To</label>
+                                                <div class="">
+                                                    <select class="form-control m-bot15" name="sold_to" disabled>
+                                                        <option disabled>Sold To</option>
+                                                        @foreach($user_list as $user)
+                                                            <option  @if($user->id == $bike->sold_to) selected @endif  value="{{$user->id}}" >{{$user->first_name}} {{$user->last_name}} - Ph#{{$user->phone_no}} - CNIC#{{$user->cnic_no}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" >
+                                                <label for="exampleInputEmail1">Sold Price</label>
+                                                <input name="sold_price" onkeypress="return isNumber(event)" onchange="return isNumber(event)" disabled value="{{$bike->sold_price}}" type="number" class="form-control" id="chassis_no" placeholder="sold_price">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label" for="inputSuccess" >Sold Type</label>
+                                                <div class="">
+                                                    <select class="form-control m-bot15 sold_type" name="sold_type" disabled>
+                                                        <option  disabled >Select Credit Or Payment</option>
+                                                        <option @if("Paid" == $bike->sold_type) selected @endif  value="Paid">Paid</option>
+                                                        <option @if("Credit" == $bike->sold_type) selected @endif value="Credit">Credit</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="credit_section">
+                                                @if("Credit" == $bike->sold_type)
+                                                <div class="form-group">
+                                                    <label class="control-label" for="inputSuccess">Credit Type</label>
+                                                    <div class="">
+                                                        <select class="form-control m-bot15" name="credit_type" disabled>
+                                                            <option selected disabled >Select Credit Type</option>
+                                                            <option @if("Cash Sale Credit" == $bike->credit_type) selected @endif disabled value="Cash Sale Credit">Cash Sale Credit</option>
+                                                            <option @if("Installment" == $bike->credit_type) selected @endif disabled value="Installment">Installment</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @endif
+
+                                                @foreach($bike->credit as $credit)
+                                                        @php
+                                                            $payment_date = new \DateTime($credit->payment_date);
+                                                            $payment_date_format = date_format($payment_date, "d-M-Y");
+
+
+                                                            $today = new DateTime(date_format(today() , "Y-m-d"));
+                                                            $interval = $payment_date->diff($today);
+                                                            $days = $interval->format('%a');//now do whatever you like with $days
+
+//                                                        dd($days ,$payment_date , $today , $payment_date > $today );
+                                                        @endphp
+                                                <div class="form-group col-dmd-12 payment_block">
+                                                    {{--<label class="control-label" for="inputSuccess">Payment</label>--}}
+                                                    <div class="payment_input_detail" style="display: inline-flex;">
+                                                        <input disabled value="{{$credit->payment_price}}"  name="payment_price[]" type="number"  onkeypress="return isNumber(event)" onchange="return isNumber(event)" class="form-control col-md-f3" id="chassis_no" placeholder="purchase_price">
+                                                        <input disabled value="{{$payment_date_format}}"  name="payment_date[]" type="text" class="form-control col-mdf-3" id="sold_date" placeholder="sold_date">
+
+                                                        @if($credit->is_paid == 0)
+                                                            <input disabled class="btn btn-danger col-md-9" data-key="1"  id="" value="UnPaid">
+                                                         @elseif($credit->is_paid == 1)
+                                                            <input disabled class="btn btn-success col-md-9" data-key="1"  id="" value="Paid">
+                                                         @endif
+                                                        @if($payment_date > $today)
+                                                            <input disabled class="btn btn-success col-md-9" data-key="1"  id="add_payment_block" value="Pay in {{$days}} Days">
+                                                        @else
+                                                            <input disabled class="btn btn-dander col-md-9" data-key="1"  id="add_payment_block" value="{{$days}} Days Past due">
+                                                        @endif
+                                                        <input class="btn btn-primary col-md-9" data-key="1"  id="add_payment_block" value="Click here if Paid">
+
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </section>
+
+
                                     @endif
 
                                     <script>
@@ -230,6 +327,21 @@
 
 
 
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="Purchased_user" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Purchased Bike From</h4>
+                </div>
+                <div class="modal-body">
+                    @include('partials.user_detail' , ['data' => $purchase_user])
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
