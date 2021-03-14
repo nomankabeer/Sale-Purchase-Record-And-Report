@@ -29,28 +29,11 @@ class BikeController extends Controller
 //        return $dataTable->render('bike.index');
     }
 
-    /*public function index()
-    {
-        return view("bike.index");
-    }*/
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create(){
         $user_list = UserList::select('id' , 'first_name' , 'last_name' , 'phone_no' , 'cnic_no')->orderBy('id' , 'desc')->get();
         return view("bike.create" , compact('user_list'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -73,15 +56,10 @@ class BikeController extends Controller
         return redirect()->route('bike.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function detail($id){
+        $user_list = UserList::select('id' , 'first_name' , 'last_name' , 'phone_no' , 'cnic_no')->orderBy('id' , 'desc')->get();
+        $bike = Bike::where('id' , $id)->first();
+        return view("bike.detail" , compact('user_list' , 'bike'));
     }
 
     /**
@@ -127,7 +105,7 @@ class BikeController extends Controller
         return DataTables::of($jobQuery)
             ->addColumn('action', function (Bike $bike) {
 //                return '<a href="' . route("user_list.edit", $UserList->id) . '" class="btn listActionButton btn-success">Details</a><a href="' . route("user_list.edit", $UserList->id) . '" class="btn listActionButton btn-info">Edit</a>';
-                return '<a href="' . route("user_list.edit", $bike->id) . '" class="btn listActionButton btn-success">Details</a><a href="' . route("user_list.edit", $bike->id) . '" class="btn listActionButton btn-info">Edit</a>';
+                return '<a href="' . route("bike.detail", $bike->id) . '" class="btn listActionButton btn-success">Details</a>';
             })
             ->editColumn('created_at', function (Bike $bike) {
                 return $bike->created_at->diffForHumans();
