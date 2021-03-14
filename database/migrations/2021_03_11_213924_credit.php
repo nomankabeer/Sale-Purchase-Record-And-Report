@@ -19,6 +19,7 @@ class Credit extends Migration
             $table->integer('payment_price')->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->tinyInteger('is_paid')->default(0);
+            $table->dateTime('pay_date')->nullable();
             $table->timestamps();
         });
     }

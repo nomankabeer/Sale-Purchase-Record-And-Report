@@ -115,9 +115,15 @@ class BikeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function payment_update($id,$val,$return_page = null , $detail_id = null)
     {
-        //
+        $today_date = date_format(today() , "Y-m-d h:m:s");
+        if(Credit::where('id' , $id)->update(['is_paid' => $val , 'pay_date' => $today_date])){
+            if($return_page == "bike_detail"){
+                return redirect()->route('bike.detail_update' , $detail_id);
+            }
+        }
+        return redirect('/');
     }
 
 

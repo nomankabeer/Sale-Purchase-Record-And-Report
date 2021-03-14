@@ -34,7 +34,7 @@
         .payment_input input{
             margin: 0px 15px;
         }
-        .payment_input_detail input{
+        .payment_input_detail input , .payment_input_detail a{
             margin: 0px 5px;
         }
         .hide {
@@ -247,12 +247,25 @@
                                                          @elseif($credit->is_paid == 1)
                                                             <input disabled class="btn btn-success col-md-9" data-key="1"  id="" value="Paid">
                                                          @endif
-                                                        @if($payment_date > $today)
-                                                            <input disabled class="btn btn-success col-md-9" data-key="1"  id="add_payment_block" value="Pay in {{$days}} Days">
-                                                        @else
-                                                            <input disabled class="btn btn-dander col-md-9" data-key="1"  id="add_payment_block" value="{{$days}} Days Past due">
+
+                                                        @if($credit->is_paid == 1)
+                                                            @php
+                                                                $paid_date = new \DateTime($credit->pay_date);
+                                                                $paid_date_format = date_format($paid_date, "d-M-Y");
+                                                            @endphp
+                                                            <input disabled class="btn btn-success col-md-9" data-key="1"  id="add_payment_block" value="{{$paid_date_format}}">
+                                                        @elseif($payment_date > $today)
+                                                            <input disabled class="btn btn-info col-md-9" data-key="1"  id="add_payment_block" value="Pay in {{$days}} Days">
+                                                        @elseif($payment_date < $today)
+                                                            <input disabled class="btn btn-danger col-md-9" data-key="1"  id="add_payment_block" value="{{$days}} Days Past due">
                                                         @endif
-                                                        <input class="btn btn-primary col-md-9" data-key="1"  id="add_payment_block" value="Click here if Paid">
+
+                                                        @if($credit->is_paid == 0)
+                                                            <a class="btn btn-primary col-md-9" href="{{route('credit.payment.update', [$credit->id ,1,"bike_detail",$id])}}" id="add_payment_block" >Click here if Paid</a>
+                                                        @elseif($credit->is_paid == 1)
+                                                            <a class="btn btn-danger col-md-9" href="{{route('credit.payment.update', [$credit->id ,0,"bike_detail",$id])}}"  id="add_payment_block" >Click here if Not Paid</a>
+                                                        @endif
+
 
                                                     </div>
                                                 </div>

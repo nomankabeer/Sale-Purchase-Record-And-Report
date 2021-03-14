@@ -254,7 +254,7 @@
                                         <div class="col-md-8 market-update-left">
                                             <h4>Purchase Amount</h4>
                                             <h3>{{$data['total_purchase_amount_today']}}</h3>
-                                            <p>Total Bikes Purchase Amount</p>
+                                            <p>{{$data['total_purchase_bikes_today']}} Bikes Purchase Amount</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -282,7 +282,7 @@
                                         <div class="col-md-8 market-update-left">
                                             <h4>Sold Amount</h4>
                                             <h3>{{$data['total_sold_amount_today']}}</h3>
-                                            <p>Total Sold Bikes Amount</p>
+                                            <p>{{$data['total_sold_bikes_today']}} Bikes Sold Amount</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>

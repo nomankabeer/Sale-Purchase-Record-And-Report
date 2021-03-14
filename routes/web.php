@@ -27,6 +27,7 @@ Route::get('/bike/create' , [BikeController::class , "create"])->name('bike.crea
 Route::post('/bike/store' , [BikeController::class , "store"])->name('bike.store');
 Route::get('/bike/detail/{id}' , [BikeController::class , "detail"])->name('bike.detail');
 Route::post('/bike/detail/{id}' , [BikeController::class , "detail_update"])->name('bike.detail_update');
+Route::get('/credit/payment/{id}/{val}/{return_page?}/{page_id?}' , [BikeController::class , "payment_update"])->name('credit.payment.update');
 
 
 Route::get('/user_list' , [UserListController::class , "index"])->name('user_list.index');
